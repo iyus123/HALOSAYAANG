@@ -3,13 +3,16 @@
   --bg-soft: #fff0f6;
   --pink: #f58fb1;
   --pink-deep: #e96d98;
+  --pink-dark: #cf5e87;
   --lavender: #b797d6;
   --text: #473545;
   --text-soft: #7f6579;
   --white: #ffffff;
   --shadow: 0 20px 60px rgba(233, 109, 152, 0.18);
+  --shadow-soft: 0 14px 34px rgba(207, 94, 135, 0.14);
   --radius-xl: 32px;
   --radius-lg: 24px;
+  --radius-md: 18px;
 }
 
 * {
@@ -49,24 +52,83 @@ button {
   place-items: center;
   text-align: center;
   overflow: hidden;
-  padding: 60px 0;
+  padding: 72px 0 88px;
   background:
-    radial-gradient(circle at top, rgba(255,255,255,0.9), transparent 40%),
+    radial-gradient(circle at top, rgba(255,255,255,0.92), transparent 40%),
     linear-gradient(135deg, rgba(245, 143, 177, 0.18), rgba(183, 151, 214, 0.18)),
-    url('assets/images/mila-6.jpeg') center/cover no-repeat;
+    url('assets/images/mila-11.jpeg') center/cover no-repeat;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, rgba(255,248,251,0.62), rgba(255,248,251,0.92));
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
+}
+
+.hero-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  filter: blur(24px);
+  opacity: 0.34;
+  z-index: 1;
+}
+
+.hero-glow-1 {
+  top: -60px;
+  left: -80px;
+  background: rgba(245, 143, 177, 0.65);
+}
+
+.hero-glow-2 {
+  right: -80px;
+  bottom: -80px;
+  background: rgba(183, 151, 214, 0.55);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 860px;
+  padding: 34px;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.38);
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 18px 48px rgba(155, 84, 118, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.8);
+  color: var(--pink-dark);
+  border: 1px solid rgba(233, 109, 152, 0.16);
+  padding: 10px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  animation: floatSmall 2.2s ease-in-out infinite;
+}
+
+@keyframes floatSmall {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
 }
 
 .eyebrow,
@@ -82,7 +144,7 @@ button {
 .section-title h2,
 .final-card h2 {
   margin: 12px 0 16px;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
 .hero h1 {
@@ -90,7 +152,8 @@ button {
 }
 
 .hero h1 span,
-.signature {
+.signature,
+.letter-inside h3 {
   font-family: 'Great Vibes', cursive;
   color: var(--pink-deep);
 }
@@ -100,9 +163,17 @@ button {
 .final-card p,
 .memory-text p,
 .countdown-wrap p,
-.video-placeholder p {
+.video-placeholder p,
+.letter-inside p,
+.hug-box p {
   color: var(--text-soft);
   line-height: 1.8;
+}
+
+.section-desc {
+  max-width: 760px;
+  margin: 0 auto 26px;
+  text-align: center;
 }
 
 .hero-buttons {
@@ -134,7 +205,7 @@ button {
 }
 
 .btn-secondary {
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.82);
   color: var(--text);
   border: 1px solid rgba(233, 109, 152, 0.2);
 }
@@ -150,13 +221,15 @@ button {
 }
 
 code {
-  background: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.7);
   padding: 4px 8px;
   border-radius: 10px;
 }
 
 .section {
   padding: 96px 0;
+  position: relative;
+  z-index: 2;
 }
 
 .soft-section {
@@ -173,19 +246,30 @@ code {
 }
 
 .section-title h2,
-.final-card h2 {
+.final-card h2,
+.hug-box h3 {
   font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.letter-card,
+.reason-card,
+.portrait-wrap,
+.countdown-card,
+.video-card,
+.final-card,
+.memory-strip,
+.hug-box {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(233, 109, 152, 0.12);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
 }
 
 .letter-card {
   position: relative;
   max-width: 840px;
   margin: 0 auto;
-  background: rgba(255,255,255,0.85);
-  border: 1px solid rgba(233, 109, 152, 0.12);
-  box-shadow: var(--shadow);
-  border-radius: var(--radius-xl);
-  padding: 28px;
+  padding: 30px;
   min-height: 260px;
   cursor: pointer;
   overflow: hidden;
@@ -233,15 +317,8 @@ code {
 }
 
 .letter-inside h3 {
-  font-family: 'Great Vibes', cursive;
   font-size: 2.2rem;
   margin: 0 0 14px;
-  color: var(--pink-deep);
-}
-
-.letter-inside p {
-  color: var(--text-soft);
-  line-height: 1.95;
 }
 
 .two-col {
@@ -257,20 +334,9 @@ code {
   gap: 18px;
 }
 
-.reason-card,
-.portrait-wrap,
-.countdown-card,
-.video-card,
-.final-card,
-.memory-strip {
-  background: rgba(255,255,255,0.8);
-  border: 1px solid rgba(233, 109, 152, 0.12);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-}
-
 .reason-card {
   padding: 22px;
+  box-shadow: var(--shadow-soft);
 }
 
 .reason-card span {
@@ -449,10 +515,10 @@ code {
   margin-top: 18px;
 }
 
-.lightbox {
+.lightbox,
+.hug-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(34, 20, 31, 0.8);
   display: grid;
   place-items: center;
   padding: 24px;
@@ -462,7 +528,12 @@ code {
   z-index: 100;
 }
 
-.lightbox.open {
+.lightbox {
+  background: rgba(34, 20, 31, 0.8);
+}
+
+.lightbox.open,
+.hug-overlay.open {
   opacity: 1;
   visibility: visible;
 }
@@ -474,17 +545,101 @@ code {
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
 }
 
-.lightbox-close {
+.lightbox-close,
+.hug-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
   border: none;
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   font-size: 2rem;
   cursor: pointer;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.92);
+  color: var(--text);
+}
+
+.hug-overlay {
+  background: radial-gradient(circle at center, rgba(255,245,250,0.95), rgba(79,37,61,0.72));
+  backdrop-filter: blur(8px);
+}
+
+.hug-box {
+  position: relative;
+  width: min(560px, 100%);
+  text-align: center;
+  padding: 32px 26px 28px;
+  overflow: hidden;
+}
+
+.hug-stage {
+  position: relative;
+  height: 250px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.hug-person {
+  position: absolute;
+  top: 50%;
+  font-size: 5rem;
+  transform: translateY(-50%);
+  transition: transform 0.85s ease, left 0.85s ease, right 0.85s ease;
+  filter: drop-shadow(0 14px 22px rgba(160, 86, 122, 0.18));
+}
+
+.left-person {
+  left: 8%;
+}
+
+.right-person {
+  right: 8%;
+}
+
+.hug-center-heart {
+  font-size: 4rem;
+  transform: scale(0.7);
+  opacity: 0.5;
+  transition: 0.7s ease;
+}
+
+.hug-sparkles {
+  position: absolute;
+  bottom: 22px;
+  font-size: 1.3rem;
+  letter-spacing: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.7s ease;
+}
+
+.hug-stage.active .left-person {
+  left: 35%;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.hug-stage.active .right-person {
+  right: 35%;
+  transform: translate(50%, -50%) scale(1.05);
+}
+
+.hug-stage.active .hug-center-heart {
+  transform: scale(1.22);
+  opacity: 1;
+  animation: heartbeat 1s ease-in-out infinite;
+}
+
+.hug-stage.active .hug-sparkles {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1.18); }
+  50% { transform: scale(1.34); }
 }
 
 .toast {
@@ -501,6 +656,7 @@ code {
   transition: 0.35s ease;
   z-index: 101;
   text-align: center;
+  width: min(92vw, 460px);
 }
 
 .toast.show {
@@ -555,6 +711,10 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .hero-content {
+    max-width: 700px;
+  }
+
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -565,33 +725,197 @@ code {
 }
 
 @media (max-width: 640px) {
+  .container {
+    width: min(100%, calc(100% - 22px));
+  }
+
   .section {
-    padding: 74px 0;
+    padding: 72px 0;
   }
 
   .hero {
     min-height: auto;
-    padding: 90px 0 70px;
+    padding: 26px 0 74px;
+    background-position: center top;
+  }
+
+  .hero-content {
+    padding: 22px 16px 20px;
+    border-radius: 26px;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 9px 14px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow,
+  .mini {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero h1 {
+    font-size: 2.35rem;
+    margin: 10px 0 14px;
+  }
+
+  .lead,
+  .note,
+  .section-desc,
+  .letter-inside p,
+  .memory-text p,
+  .countdown-wrap p,
+  .video-placeholder p,
+  .final-card p,
+  .hug-box p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .section-title {
+    margin-bottom: 18px;
+  }
+
+  .section-title h2,
+  .final-card h2,
+  .hug-box h3 {
+    font-size: 1.9rem;
+    line-height: 1.15;
   }
 
   .reasons-grid,
   .message-buttons,
-  .gallery-grid,
-  .countdown-card {
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
+  .countdown-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .count-box {
+    padding: 18px 10px;
+  }
+
+  .count-box span {
+    font-size: 1.55rem;
+  }
+
   .gallery-item img {
-    height: 280px;
+    height: 270px;
+  }
+
+  .gallery-item::after {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 0.82rem;
+    padding: 8px 12px;
   }
 
   .portrait-wrap img {
-    height: 400px;
+    height: 380px;
   }
 
   .letter-card,
   .memory-strip,
-  .final-card {
-    padding: 22px;
+  .final-card,
+  .video-placeholder,
+  .hug-box {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .letter-front {
+    min-height: 150px;
+    font-size: 1.05rem;
+  }
+
+  .letter-inside h3 {
+    font-size: 1.9rem;
+  }
+
+  .memory-strip {
+    gap: 20px;
+  }
+
+  .secret-btn {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .video-card video {
+    aspect-ratio: 9 / 14;
+  }
+
+  .final-section {
+    padding-bottom: 84px;
+  }
+
+  .hug-stage {
+    height: 220px;
+  }
+
+  .hug-person {
+    font-size: 4rem;
+  }
+
+  .left-person {
+    left: 2%;
+  }
+
+  .right-person {
+    right: 2%;
+  }
+
+  .hug-stage.active .left-person {
+    left: 31%;
+  }
+
+  .hug-stage.active .right-person {
+    right: 31%;
+  }
+
+  .hug-center-heart {
+    font-size: 3rem;
+  }
+
+  .hug-sparkles {
+    font-size: 1.05rem;
+    letter-spacing: 4px;
+    bottom: 14px;
+  }
+
+  .lightbox,
+  .hug-overlay {
+    padding: 14px;
+  }
+
+  .lightbox-close,
+  .hug-close {
+    width: 42px;
+    height: 42px;
+    font-size: 1.6rem;
+    top: 12px;
+    right: 12px;
+  }
+
+  .toast {
+    bottom: 16px;
+    font-size: 0.92rem;
+    padding: 12px 14px;
   }
 }

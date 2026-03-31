@@ -10,6 +10,9 @@ const bgMusic = document.getElementById('bgMusic');
 const finalSurprise = document.getElementById('finalSurprise');
 const hugMessage = document.getElementById('hugMessage');
 const floatingHearts = document.querySelector('.floating-hearts');
+const hugOverlay = document.getElementById('hugOverlay');
+const closeHug = document.getElementById('closeHug');
+const hugStage = document.getElementById('hugStage');
 
 letterCard?.addEventListener('click', () => {
   letterCard.classList.toggle('open');
@@ -30,13 +33,27 @@ lightbox?.addEventListener('click', (e) => {
   if (e.target === lightbox) closeGallery();
 });
 
+closeHug?.addEventListener('click', closeHugOverlay);
+hugOverlay?.addEventListener('click', (e) => {
+  if (e.target === hugOverlay) closeHugOverlay();
+});
+
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeGallery();
+  if (e.key === 'Escape') {
+    closeGallery();
+    closeHugOverlay();
+  }
 });
 
 function closeGallery() {
   lightbox.classList.remove('open');
   lightbox.setAttribute('aria-hidden', 'true');
+}
+
+function closeHugOverlay() {
+  hugOverlay.classList.remove('open');
+  hugOverlay.setAttribute('aria-hidden', 'true');
+  hugStage.classList.remove('active');
 }
 
 secretButtons.forEach((button) => {
@@ -72,7 +89,12 @@ musicToggle?.addEventListener('click', async () => {
 
 finalSurprise?.addEventListener('click', () => {
   hugMessage.classList.add('show');
-  burstHearts(18);
+  hugOverlay.classList.add('open');
+  hugOverlay.setAttribute('aria-hidden', 'false');
+  setTimeout(() => {
+    hugStage.classList.add('active');
+  }, 120);
+  burstHearts(20);
 });
 
 function burstHearts(count = 10) {
@@ -102,20 +124,24 @@ const observer = new IntersectionObserver((entries) => {
 revealItems.forEach((item) => observer.observe(item));
 
 const tiltCards = document.querySelectorAll('.tilt-card');
-tiltCards.forEach((card) => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rotateX = ((y / rect.height) - 0.5) * -8;
-    const rotateY = ((x / rect.width) - 0.5) * 8;
-    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
+const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+if (canTilt) {
+  tiltCards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y / rect.height) - 0.5) * -8;
+      const rotateY = ((x / rect.width) - 0.5) * 8;
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+    });
   });
-});
+}
 
 function updateTodayCountdown() {
   const now = new Date();

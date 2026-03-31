@@ -15,7 +15,11 @@
 
   <header class="hero">
     <div class="hero-overlay"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+
     <div class="container hero-content reveal active">
+      <div class="hero-badge">Made especially for Mila 🤍</div>
       <p class="eyebrow">A little digital surprise, made with love</p>
       <h1>Happy Birthday, <span>Mila Aprilia</span> ✨</h1>
       <p class="lead">
@@ -25,7 +29,8 @@
       <div class="hero-buttons">
         <a href="#surprise" class="btn btn-primary">Buka Kejutan 💌</a>
         <button class="btn btn-secondary" id="musicToggle">Putar Musik 🎵</button>
-      </div>
+         </div>
+    <div> class="hero-scroll">Scroll pelan yaa ↓</div>
   </header>
 
   <main>
@@ -52,8 +57,8 @@
             dengan kebahagiaan yang pantas kamu dapatkan.
           </p>
           <p>
-            Terima kasih karena sudah hadir, karena sudah menjadi Mila yang hangat,
-            lucu, gemas, dan sangat berharga. Hari ini aku cuma mau kamu tahu satu hal:
+            Terima kasih karena sudah hadir, karena sudah menjadi Mila yang sabar,
+            lucu, gemesh, dan sangat berharga. Hari ini aku cuma mau kamu tahu satu hal:
             kamu spesial, sangat spesial.
           </p>
           <p class="signature">With love, always 💖</p>
@@ -103,17 +108,16 @@
         <h2>Galeri kenangan</h2>
       </div>
       <p class="section-desc">
-        Klik foto mana pun untuk melihat lebih dekat. Aku pilih foto-foto yang manis, hangat,
-        dan paling terasa seperti kita.
+        bisa di klik kok, coba liat. kamu inget gak poto kapan aja ini? 
       </p>
 
       <div class="gallery-grid">
-        <button class="gallery-item" data-full="assets/images/mila-1.jpeg"><img src="assets/images/mila-1.jpeg" alt="Kenangan 1"></button>
+        <button class="gallery-item" data-full="assets/images/mila-9.jpeg"><img src="assets/images/mila-9.jpeg" alt="Kenangan 1"></button>
         <button class="gallery-item" data-full="assets/images/mila-2.jpeg"><img src="assets/images/mila-2.jpeg" alt="Kenangan 2"></button>
         <button class="gallery-item" data-full="assets/images/mila-3.jpeg"><img src="assets/images/mila-3.jpeg" alt="Kenangan 3"></button>
         <button class="gallery-item" data-full="assets/images/mila-4.jpeg"><img src="assets/images/mila-4.jpeg" alt="Kenangan 4"></button>
         <button class="gallery-item" data-full="assets/images/mila-5.jpeg"><img src="assets/images/mila-5.jpeg" alt="Kenangan 5"></button>
-        <button class="gallery-item" data-full="assets/images/mila-6.jpeg"><img src="assets/images/mila-6.jpeg" alt="Kenangan 6"></button>
+        <button class="gallery-item" data-full="assets/images/mila-10.jpeg"><img src="assets/images/mila-10.jpeg" alt="Kenangan 6"></button>
       </div>
     </section>
 
@@ -125,12 +129,12 @@
             <h2>Pesan-pesan kecil untukmu</h2>
           </div>
           <p>
-            Kadang rasa sayang nggak selalu harus ditulis panjang. Kadang cukup lewat
-            pesan-pesan kecil yang diam-diam bikin hati hangat.
+            Semoga pesan-pesan pendek ini bisa jadi doa dan penyemangat buat kamu
+            untuk jalani hari-hari kamu yaa..
           </p>
         </div>
         <div class="message-buttons">
-          <button class="secret-btn" data-message="Semoga hari-hari kamu selalu dipeluk banyak hal baik 🌸">Pesan 1</button>
+          <button class="secret-btn" data-message="Semoga hari-hari kamu selalu dikelilingi banyak hal baik 🌸">Pesan 1</button>
           <button class="secret-btn" data-message="Semoga kamu selalu punya alasan untuk tersenyum, bahkan di hari yang berat 🤍">Pesan 2</button>
           <button class="secret-btn" data-message="Terima kasih sudah jadi rumah yang hangat dalam versi paling sederhana 🏡">Pesan 3</button>
           <button class="secret-btn" data-message="Di antara banyak hal indah, kamu tetap salah satu favoritku ✨">Pesan 4</button>
@@ -171,12 +175,31 @@
       </div>
     </section>
 
+    <section class="section container reveal">
+      <div class="section-title">
+        <p class="mini">special video corner</p>
+        <h2>Sudut video spesial</h2>
+        <p>
+          Di setiap detik yang kita lewati bersama, selalu ada cerita yang 
+          tidak akan pernah bisa tergantikan. Mungkin sederhana, mungkin terlihat biasa, 
+          tapi bagiku semua itu sangat berarti.💖
+        </p>
+       
+          </div>
+        </div>
+        <video autoplay muted loop playsinline>
+          <source src="assets/media/video-kenangan.mp4" type="video/mp4"/>
+          Browser kamu belum mendukung video.
+        </video>
+      </div>
+    </section>
+
     <section class="section final-section reveal">
       <div class="container final-card">
         <p class="mini center">one last thing</p>
         <h2>Untuk Mila Aprilia, sekali lagi...</h2>
         <p>
-          Selamat ulang tahun ya, Sayang. Semoga hidupmu dipenuhi tawa yang tulus,
+          Selamat ulang tahun ya, Sayangkuh. Semoga hidupmu dipenuhi tawa yang tulus,
           hati yang tenang, langkah yang dimudahkan, dan cinta yang selalu menemukan jalan pulang.
         </p>
         <p>
@@ -195,10 +218,24 @@
     <img id="lightboxImage" src="" alt="Preview foto" />
   </div>
 
+  <div class="hug-overlay" id="hugOverlay" aria-hidden="true">
+    <div class="hug-box">
+      <button class="hug-close" id="closeHug">×</button>
+      <div class="hug-stage" id="hugStage">
+        <div class="hug-person left-person">🧍‍♂️</div>
+        <div class="hug-center-heart">🤍</div>
+        <div class="hug-person right-person">🧍‍♀️</div>
+        <div class="hug-sparkles">✨ 💖 ✨</div>
+      </div>
+      <h3>Peluk virtual buat Mila</h3>
+      <p>Semoga peluk kecil ini bisa sampai ke hati kamu dan bikin hari ulang tahunmu terasa makin hangat.</p>
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 
   <audio id="bgMusic" loop>
-    <source src="assets/media/blue.mp3" type="audio/mpeg" />
+    <source src="assets/media/music-romantic.mp3" type="audio/mpeg" />
   </audio>
 
   <script src="script.js"></script>
