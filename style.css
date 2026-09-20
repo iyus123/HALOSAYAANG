@@ -473,6 +473,10 @@ code {
 
 .video-card {
   overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .video-placeholder {
@@ -481,8 +485,11 @@ code {
 }
 
 .video-card video {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
+  object-fit: cover;
   background: #000;
 }
 
@@ -918,12 +925,4 @@ code {
     font-size: 0.92rem;
     padding: 12px 14px;
   }
-  special-video {
-  display: block;
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  margin: 30px auto 0;
-  border-radius: 20px;
-}
 }
