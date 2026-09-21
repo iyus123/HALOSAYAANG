@@ -13,6 +13,7 @@ const floatingHearts = document.querySelector('.floating-hearts');
 const hugOverlay = document.getElementById('hugOverlay');
 const closeHug = document.getElementById('closeHug');
 const hugStage = document.getElementById('hugStage');
+const specialVideo = document.getElementById("specialVideo");
 
 letterCard?.addEventListener('click', () => {
   letterCard.classList.toggle('open');
