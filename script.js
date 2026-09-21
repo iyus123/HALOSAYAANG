@@ -143,22 +143,72 @@ if (canTilt) {
   });
 }
 
-function updateTodayCountdown() {
+// ==========================================
+// COUNTDOWN ULANG TAHUN - 22 SEPTEMBER
+// ==========================================
+
+function updateBirthdayCountdown() {
+
   const now = new Date();
-  const end = new Date(now);
-  end.setHours(23, 59, 59, 999);
 
-  const diff = end - now;
-  const day = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hour = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minute = Math.floor((diff / (1000 * 60)) % 60);
-  const second = Math.floor((diff / 1000) % 60);
+  // Target ulang tahun berikutnya: 22 September
+  let target = new Date(
+    now.getFullYear(),
+    8, // September = 8
+    22,
+    0,
+    0,
+    0
+  );
 
-  document.getElementById('dayNum').textContent = String(day).padStart(2, '0');
-  document.getElementById('hourNum').textContent = String(hour).padStart(2, '0');
-  document.getElementById('minuteNum').textContent = String(minute).padStart(2, '0');
-  document.getElementById('secondNum').textContent = String(second).padStart(2, '0');
+  // Kalau tanggal 22 September tahun ini sudah lewat,
+  // hitung ke 22 September tahun depan
+  if (now >= target) {
+    target = new Date(
+      now.getFullYear() + 1,
+      8,
+      22,
+      0,
+      0,
+      0
+    );
+  }
+
+  const diff = target - now;
+
+  const day = Math.floor(
+    diff / (1000 * 60 * 60 * 24)
+  );
+
+  const hour = Math.floor(
+    (diff / (1000 * 60 * 60)) % 24
+  );
+
+  const minute = Math.floor(
+    (diff / (1000 * 60)) % 60
+  );
+
+  const second = Math.floor(
+    (diff / 1000) % 60
+  );
+
+
+  document.getElementById('dayNum').textContent =
+    String(day).padStart(2, '0');
+
+  document.getElementById('hourNum').textContent =
+    String(hour).padStart(2, '0');
+
+  document.getElementById('minuteNum').textContent =
+    String(minute).padStart(2, '0');
+
+  document.getElementById('secondNum').textContent =
+    String(second).padStart(2, '0');
 }
 
-updateTodayCountdown();
-setInterval(updateTodayCountdown, 1000);
+
+// Jalankan langsung
+updateBirthdayCountdown();
+
+// Update setiap detik
+setInterval(updateBirthdayCountdown, 1000);
